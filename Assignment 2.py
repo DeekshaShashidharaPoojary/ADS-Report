@@ -9,9 +9,12 @@ import pandas as pd
 
 def Agriculture(filename):
     df1=pd.read_csv(filename, skiprows=4)
-    df1= df1.iloc[:6,5:10]
+    df1 = df1.drop(['Country Code','Indicator Name','Indicator Code'], axis=1)
+    df1= df1.iloc[:6,0:7]
+    df1=df1.dropna()
     df2= df1.T
     print(df1)
     print(df2)
     return df1,df2
 Agriculture("API_AG.LND.AGRI.ZS_DS2_en_csv_v2_4669757.csv")
+
