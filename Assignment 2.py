@@ -9,7 +9,7 @@ import pandas as pd
 
 def Agriculture(filename):
     df1=pd.read_csv(filename, skiprows=4)
-    #df1= df1.iloc[:6,5:10]
+    df1= df1.iloc[:6,5:10]
     df2= df1.T
     print(df1)
     print(df2)
