@@ -7,6 +7,7 @@ Created on Sat Nov 26 14:26:05 2022
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 #defining a fuction 
@@ -91,19 +92,28 @@ def climate_change(filename3):
     df2=pd.read_csv(filename3, skiprows=4)
     #dropping the columns
     df2= df2.drop(['Country Code','Indicator Code'], axis=1)
-    #df2=df2.iloc[[15202,15203,15204,15205,15206,15207],[0,1,41,42,43,44,45,46]]
+    #selecting the particular country to plot for heatmap
     df2=df2.loc[df2["Country Name"]=='Qatar']
-    ind=["Urban population","Mortality rate, Cereal yield (kg per hectare)",
-         "CO2 emissions (kt)","Forest area (% of land area)","Arable land (% of land area)"]
+    #slecting the indicators to be plotted
+    ind=["Urban population","Cereal yield (kg per hectare)","CO2 emissions (kt)",
+         "Electricity production from oil sources (% of total)",
+         "Arable land (% of land area)","Agricultural irrigated land (% of total agricultural land)",
+         "Total greenhouse gas emissions (% change from 1990)",
+         "Agriculture, forestry, and fishing, value added (% of GDP)",]
+    #
     filter= df2["Indicator Name"].isin(ind)
+    
     df4=df2.loc[filter]
     df5=df4[['Indicator Name','1960','1980','2000','2010','2018','2019']]
     df5=df5.set_index("Indicator Name").T
     df5= df5.fillna(0)
     return df2,df5
+
 s,h=climate_change("Master.csv")
 print(s)
 print(h)
+sns.heatmap(h, linewidth=0.5)
+
 
 def map_corr(df, size=10):
     corr = df.corr()
@@ -111,12 +121,14 @@ def map_corr(df, size=10):
     ax.matshow(corr, cmap='coolwarm')
     plt.xticks(range(len(corr.columns)), corr.columns, rotation=90)
     plt.yticks(range(len(corr.columns)), corr.columns)
-    plt.savefig('plot5.png')
-   
+    
+  
 corr = h.corr()
+print(corr)
 map_corr(h)
 plt.show()
-
+h = h.fillna(0)
+plt.show
 
     
 
