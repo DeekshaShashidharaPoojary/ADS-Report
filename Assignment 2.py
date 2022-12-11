@@ -100,35 +100,47 @@ def climate_change(filename3):
          "Arable land (% of land area)","Agricultural irrigated land (% of total agricultural land)",
          "Total greenhouse gas emissions (% change from 1990)",
          "Agriculture, forestry, and fishing, value added (% of GDP)",]
-    #
+    #adding filter for indicator name based on indicator
     filter= df2["Indicator Name"].isin(ind)
-    
+    #selecting particular variable and assigning to a new dataframe
     df4=df2.loc[filter]
+    #selecting the indicator name and the years
     df5=df4[['Indicator Name','1960','1980','2000','2010','2018','2019']]
+    #transposing the dataframe 
     df5=df5.set_index("Indicator Name").T
+    #replacing the nan values with 0
     df5= df5.fillna(0)
+    #to return the dataframes
     return df2,df5
 
+#assigning the variable to funtion called
 s,h=climate_change("Master.csv")
-print(s)
-print(h)
-sns.heatmap(h, linewidth=0.5)
+print(s)#to get the the result of s
+print(h)#to get the the result of h
 
-
+#Function generates a correlation heatmap and size to plot vertical and horizontal 
 def map_corr(df, size=10):
+    #finding correlation of each columns
     corr = df.corr()
+    #clarity for the subplots
     fig, ax = plt.subplots(figsize=(size, size))
     ax.matshow(corr, cmap='coolwarm')
+    #plotting and setting ticks to column names
     plt.xticks(range(len(corr.columns)), corr.columns, rotation=90)
     plt.yticks(range(len(corr.columns)), corr.columns)
     
-  
+
 corr = h.corr()
 print(corr)
+#calling the funtion
 map_corr(h)
+#alot colour indicator
+sns.heatmap(corr, linewidth=0.5)
+##assigning the title for the map
+plt.title("Qatar")
+#display the figure
 plt.show()
-h = h.fillna(0)
-plt.show
+
 
     
 
