@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
+
 #defining a fuction 
 def Agriculture(filename):
     #reading the csv file 
@@ -135,9 +136,12 @@ print(corr)
 #calling the funtion
 map_corr(h)
 #alot colour indicator
+plt.figure(figsize=(50,50))
 sns.heatmap(corr, linewidth=0.5)
 ##assigning the title for the map
+
 plt.title("Qatar")
+plt.savefig('plot5.png')
 #display the figure
 plt.show()
 
