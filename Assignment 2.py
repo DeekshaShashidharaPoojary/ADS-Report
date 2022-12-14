@@ -124,7 +124,7 @@ corr= h.corr()
 print(corr)
 #clarity for the subplots
 fig, ax= plt.subplots(figsize=(10, 10))
-#
+#plot and adding colour to the heatmap
 im= ax.imshow(corr, cmap='RdBu_r')
 #plotting the graph
 cbar= ax.figure.colorbar(im, ax=ax)
