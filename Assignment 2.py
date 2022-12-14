@@ -8,8 +8,11 @@ Created on Sat Nov 26 14:26:05 2022
 import pandas as pd
 import matplotlib.pyplot as plt
 
-#defining a fuction 
-def Agriculture(filename):
+'''
+defining a function to read the data set of  Population_and_Renewable 
+Filename : Reads the  Population_growth and Renewable dataset and plots the line graph
+'''
+def Population_and_Renewable(filename):
     #reading the csv file 
     df1= pd.read_csv(filename, skiprows= 4) 
     #dropping the columns
@@ -24,7 +27,7 @@ def Agriculture(filename):
     return df1,df2
 
 #assigning the variable to funtion called
-a, b= Agriculture("API_SP.POP.GROW_DS2_en_csv_v2_4701208.csv")
+a, b=  Population_and_Renewable("API_SP.POP.GROW_DS2_en_csv_v2_4701208.csv")
 print(a) #to get the the result of a
 print(b) #to get the the result of b
 plt.figure(dpi= 144)#to create a figure and dpi is for clarity of the line plot
@@ -37,7 +40,7 @@ plt.savefig('plot1.png')#saving the image
 
 
 #assigning the variable to funtion called
-c, d= Agriculture("API_EG.FEC.RNEW.ZS_DS2_en_csv_v2_4697469.csv")
+c, d= Population_and_Renewable("API_EG.FEC.RNEW.ZS_DS2_en_csv_v2_4697469.csv")
 print(c)#to get the the result of c
 print(d)#to get the the result of d
 plt.figure(dpi= 144)#to create a figure and dpi is for clarity of theline plot
@@ -48,8 +51,12 @@ plt.legend(loc='upper right')
 plt.title("Renewable Energy Consumption")
 plt.savefig('plot2.png')#saving the image
 
-#defining a fuction
-def resource(filename1):
+'''
+defining a function to read the data set of  Energy_and_Electric 
+Filename : Reads the  Energy Use and Electric Power Consumptions dataset and plots the 
+           bar graph
+'''
+def Energy_and_Electric(filename1):
     #reading the csv file 
     df= pd.read_csv(filename1, skiprows= 4)
     #dropping the columns
@@ -63,7 +70,7 @@ def resource(filename1):
     #to return the dataframes
     return df, df3
 #assigning the variable to funtion called
-x, y= resource("API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_4697520.csv")
+x, y= Energy_and_Electric("API_EG.USE.ELEC.KH.PC_DS2_en_csv_v2_4697520.csv")
 print(x)#to get the the result of x
 print(y)#to get the the result of y
 
@@ -75,7 +82,7 @@ plt.title("Energy Use")
 plt.savefig('plot3.png')#saving the image
 
 #assigning the variable to funtion called
-p, q= resource("API_EG.USE.PCAP.KG.OE_DS2_en_csv_v2_4697327.csv")
+p, q= Energy_and_Electric("API_EG.USE.PCAP.KG.OE_DS2_en_csv_v2_4697327.csv")
 print(p)#to get the the result of p
 print(q)#to get the the result of q
 plt.figure(dpi= 144)#to create a figure and dpi is for clarity of the bar plot
@@ -86,7 +93,11 @@ plt.title("Electric Power consumptions")
 plt.savefig('plot4.png')#saving the image
 
 
-#defining a fuction
+'''
+defining a function to read the data set of  climate_change 
+Filename : Reads the  Climate Change dataset and plots the Heatmap
+'''
+
 def climate_change(filename3):
     #reading the csv file
     df2=pd.read_csv(filename3, skiprows= 4)
