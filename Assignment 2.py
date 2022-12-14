@@ -4,11 +4,9 @@ Created on Sat Nov 26 14:26:05 2022
 
 @author: Deeksha
 """
-import numpy as np
+
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-
 
 #defining a fuction 
 def Agriculture(filename):
@@ -29,7 +27,7 @@ def Agriculture(filename):
 a, b= Agriculture("API_SP.POP.GROW_DS2_en_csv_v2_4701208.csv")
 print(a) #to get the the result of a
 print(b) #to get the the result of b
-plt.figure(dpi= 144)#to create a figure and dpi is for clarity of the bar plot
+plt.figure(dpi= 144)#to create a figure and dpi is for clarity of the line plot
 b.plot() #plotting the line graph 
 #will show the index value on the graph and set location to be shown
 plt.legend(loc='upper right')
@@ -42,7 +40,7 @@ plt.savefig('plot1.png')#saving the image
 c, d= Agriculture("API_EG.FEC.RNEW.ZS_DS2_en_csv_v2_4697469.csv")
 print(c)#to get the the result of c
 print(d)#to get the the result of d
-plt.figure(dpi= 144)#to create a figure and dpi is for clarity of the bar plot
+plt.figure(dpi= 144)#to create a figure and dpi is for clarity of theline plot
 d.plot()#plotting the line graph
 #will show the index value on the graph and set location to be shown
 plt.legend(loc='upper right')
